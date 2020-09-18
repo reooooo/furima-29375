@@ -20,17 +20,17 @@ has_many  :buys
 
 ## products テーブル
 
-| Column   | Type       | Options                        |
-| -------- | ---------  | ------------------------------ |
-| name     | string     | null: false                    |
-| explain  | text       | null: false                    |
-| category | integer    | null: false                    |
-| status   | integer    | null: false                    |
-| payment  | integer    | null: false                    |
-| area     | integer    | null: false                    |
-| date     | integer    | null: false                    |
-| price    | integer    | null: false                    |
-| user     | references | null: false, foreign_key: true |
+| Column      | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
+| name        | string     | null: false                    |
+| explain     | text       | null: false                    |
+| category_id | integer    | null: false                    |
+| status_id   | integer    | null: false                    |
+| payment_id  | integer    | null: false                    |
+| area_id     | integer    | null: false                    |
+| date_id     | integer    | null: false                    |
+| price       | integer    | null: false                    |
+| user        | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -42,11 +42,11 @@ belongs_to :user
 | Column        | Type       | Option                        |
 | ------------- | ---------- | ----------------------------- |
 | postal_number | string     | null: false                   |
-| prefecture    | integer    | null: false                   |
+| prefecture_id | integer    | null: false                   |
 | city          | string     | null: false                   |
 | house_number  | string     | null: false                   |
 | building_name | string     |                               |
-| phone_number  | integer    | null: false                   |
+| phone_number  | string     | null: false                   |
 | buy           | references | null:false, foreign_key: true |
 
 ### Association
