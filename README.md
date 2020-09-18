@@ -2,14 +2,16 @@
 
 ## users テーブル
 
-| Column     | Type    | Options     |
-| ---------- | ------- | ----------- |
-| nickname   | string  | null: false |
-| email      | string  | null: false |
-| password   | string  | null: false |
-| name       | string  | null: false | 
-| name(KANA) | string  | null: false |
-| birthday   | integer | null: false |
+| Column               | Type    | Options     |
+| -------------------- | ------- | ----------- |
+| nickname             | string  | null: false |
+| email                | string  | null: false |
+| encrypted_password   | string  | null: false |
+| family_name          | string  | null: false | 
+| last_mane            | string  | null: false |
+| family_name_KANA     | string  | null: false |
+| last_name_KANA       | string  | null: false |
+| birthday             | date    | null: false |
 
 ### Association
 
@@ -22,10 +24,10 @@ has_one  :buy
 | -------- | ---------  | ------------------------------ |
 | name     | string     | null: false                    |
 | explain  | text       | null: false                    |
-| Category | string     | null: false                    |
-| status   | string     | null: false                    |
-| payment  | string     | null: false                    |
-| area     | string     | null: false                    |
+| Category | integer    | null: false                    |
+| status   | integer    | null: false                    |
+| payment  | integer    | null: false                    |
+| area     | integer    | null: false                    |
 | date     | integer    | null: false                    |
 | price    | integer    | null: false                    |
 | image    | references | null: false, foreign_key: true |
@@ -33,24 +35,24 @@ has_one  :buy
 
 ### Association
 
-has_one    :addresses
-has_one    :buys
-belongs_to :users
+has_one    :buy
+belongs_to :user
 
 ## addresses テーブル
 
-| Column        | Type    | Option      |
-| ------------- | ------- | ----------- |
-| postal_number | integer | null: false |
-| prefecture    | string  | null: false |
-| city          | string  | null: false |
-| house_number  | integer | null: false |
-| building_name | string  |             |
-| phone_number  | integer | null: false |
+| Column        | Type       | Option                        |
+| ------------- | ---------- | ----------------------------- |
+| postal_number | string     | null: false                   |
+| prefecture    | integer    | null: false                   |
+| city          | string     | null: false                   |
+| house_number  | integer    | null: false                   |
+| building_name | string     |                               |
+| phone_number  | integer    | null: false                   |
+| buy           | references | null:false, foreign_key: true |
 
 ### Association
 
-belongs_to :products
+has_one :buy
 
 ## buys テーブル
 
@@ -61,5 +63,6 @@ belongs_to :products
 
 ### Association
 
-belongs_to :users
-belongs_to :products
+belongs_to :user
+belongs_to :product
+belongs_to :address
