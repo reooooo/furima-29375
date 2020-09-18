@@ -30,7 +30,6 @@ has_one  :buy
 | area     | integer    | null: false                    |
 | date     | integer    | null: false                    |
 | price    | integer    | null: false                    |
-| image    | references | null: false, foreign_key: true |
 | user     | references | null: false, foreign_key: true |
 
 ### Association
