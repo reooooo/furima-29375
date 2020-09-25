@@ -22,4 +22,5 @@ class UsersController < ApplicationController
     unless user_singin_in?
       redirect_to aaction: :index
     end
+  end
 end
