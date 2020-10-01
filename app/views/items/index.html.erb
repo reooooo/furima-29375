@@ -130,7 +130,7 @@
       <li class='list'>
         <%= link_to "#" do %>
         <div class='item-img-content'>
-          <%= image_tag "item-sample.png", class: "item-img" %>
+          <%# <%= image_tag item.image, class: "item-img" if item.image.attached? %> %>
 
           <%# 商品が売れていればsold outを表示しましょう %>
           <div class='sold-out'>
@@ -179,11 +179,19 @@
     </ul>
   </div>
   <%# /商品一覧 %>
+
 </div>
 <div class='purchase-btn'>
   <span class='purchase-btn-text'>出品する</span>
-  <a href="#">
-    <%= image_tag 'camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
+    <% if user_signed_in? %>
+      <%= link_to new_item_path do %>
+      <%= image_tag 'camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
+      <% end %>
+    <% else %>
+      <%= link_to user_session_path do %>
+      <%= image_tag 'camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
+      <% end %>
+    <% end %>
   </a>
 </div>
 <%= render "shared/footer" %>
