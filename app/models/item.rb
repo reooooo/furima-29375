@@ -17,9 +17,8 @@ class Item < ApplicationRecord
     validates :area
     validates :day 
     validates :image
+    validates :price,format: { with: /\A[0-9]+\z/ }
   end
-  validates :price, presence: true, format: {
-                                      with: /\A[0-9]+\z/ }
 
   with_options numericality: { other_than: 1 } do
     validates :category_id
