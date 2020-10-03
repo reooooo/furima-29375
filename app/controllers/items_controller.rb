@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @item = @item.include(:user)
+    # @item = @item.include(:user)
   end
 
   def create
