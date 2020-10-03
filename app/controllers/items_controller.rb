@@ -2,11 +2,12 @@ class ItemsController < ApplicationController
   before_action :move_to_index, only: :new
 
   def index
-    # @items = Item.order("created_at DESC")
+    @items = Item.order("created_at DESC")
   end
 
   def new
     @item = Item.new
+    # @item = @item.include(:user)
   end
 
   def create
@@ -15,9 +16,9 @@ class ItemsController < ApplicationController
        @item.save
       redirect_to root_path
     else
+      @item = @item.include(:user)
       render :new
     end
-
   end
 
   private
