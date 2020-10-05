@@ -22,14 +22,8 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-  end
-
-  def edit
-  end
-
   def update
-    @item = Item.update(item_params)
+    @item = Item.update?(item_params)
     if @item.valid?
        @item.save
       redirect_to item_path(@item.id)
